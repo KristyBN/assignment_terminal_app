@@ -1,14 +1,17 @@
-require "./country_class"
-require "tty-prompt"
-require "tty-table"
-require "tty-font"
-require "colorize"
+=begin
+    This terminal app is designed to help the user select a country
+    to travel to and access information about the destination
+=end
 
-
+require "./country_class" #Have moved class to new file country_class
+require "tty-prompt" #used for a menu prompt
+require "tty-table" #used to display translations as a table
+require "tty-font" #gives the larger font for destination
+require "colorize" #gives text colour throughout
 prompt = TTY::Prompt.new
 font = TTY::Font.new(:doom)
 
-
+#information for the countries, relate to things to do, what to pack, common phrases and climate
 bali_do = ["explore and hike volcacnos jungle and waterfalls", "monkey forest",
     "relax at the beach", "indulge at world class spas"]
 bali_list = ["swimwear", "light clothing", "hat", "sunglasses", "sandles/thongs", 
@@ -73,47 +76,11 @@ nz_climate = "known as the land of the long white cloud expect mild temps and fa
  of the south island can be as cold as -10C while coastal regions are more mild with max temps around 10-15C 
  in winter June to August Summer December to February average max temps between 20-30C"
 
-
-# class Country
-#     attr_reader :phrases, :activities, :climate, :list, :language
-#     def initialize(activities, phrases, climate, list, language)
-#         @activities = activities
-#         @phrases = phrases
-#         @climate = climate
-#         @list = list
-#         @language = language
-#     end
-
-#     def to_do()
-#         for activity in @activities do
-#         puts activity.colorize(:red)
-#         end
-#     end
-
-#     def translate()
-#         heading = ["English", @language]
-#         row = []
-#         @phrases.each do |au, translation|
-#             column = [au, translation]
-#             row.push(column)   
-#         end
-#         table = TTY::Table.new(heading, row)
-#         puts table.render(:unicode)
-#     end
-
-#     def climate()
-#         puts @climate.colorize(:blue)
-#     end
-
-#     def packing()
-#         puts @list
-#     end
-# end
-
+# Class file would be here if in one file. Have moved class to new file country_class
 
 puts "Welcome, if you are looking for a travel destination suggestion lets begin"
-system("clear")
 
+#putting in user preferences regarding budget, climate and experience prefrences
 puts "What is your budget?"
 budget = gets.chomp.to_i
 if budget < 1000
@@ -158,7 +125,7 @@ end
 
 
 
-
+# created destinations
 bali = Country.new(bali_do, bali_translate, bali_climate, bali_list, "Balinese")
 japan = Country.new(japan_do, japan_translate, japan_climate, japan_list, "Japanese")
 france = Country.new(france_do, france_translate, france_climate, france_list, "French")
@@ -173,6 +140,14 @@ destination_list = {'bali' => bali, 'japan' => japan, 'france' => france, 'germa
 
 country = destination_list[destination]
 
+=begin 
+    once the user has been given their destination they can then choose to see information about:
+    1. activities to do in the country
+    2. some local translations of common phrases
+    3. Basic climate information
+    4. a list of clothes or items they should pack
+    the user can continue to click through these until they click quit
+=end
 
 quit = false
     until quit do
