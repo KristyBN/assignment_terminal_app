@@ -1,7 +1,10 @@
+require "./country_class"
 require "tty-prompt"
 require "tty-table"
 require "tty-font"
 require "colorize"
+
+
 prompt = TTY::Prompt.new
 font = TTY::Font.new(:doom)
 
@@ -71,41 +74,41 @@ nz_climate = "known as the land of the long white cloud expect mild temps and fa
  in winter June to August Summer December to February average max temps between 20-30C"
 
 
-class Country
-    attr_reader :phrases, :activities, :climate, :list, :language
-    def initialize(activities, phrases, climate, list, language)
-        @activities = activities
-        @phrases = phrases
-        @climate = climate
-        @list = list
-        @language = language
-    end
+# class Country
+#     attr_reader :phrases, :activities, :climate, :list, :language
+#     def initialize(activities, phrases, climate, list, language)
+#         @activities = activities
+#         @phrases = phrases
+#         @climate = climate
+#         @list = list
+#         @language = language
+#     end
 
-    def to_do()
-        for activity in @activities do
-        puts activity.colorize(:red)
-        end
-    end
+#     def to_do()
+#         for activity in @activities do
+#         puts activity.colorize(:red)
+#         end
+#     end
 
-    def translate()
-        heading = ["English", @language]
-        row = []
-        @phrases.each do |au, translation|
-            column = [au, translation]
-            row.push(column)   
-        end
-        table = TTY::Table.new(heading, row)
-        puts table.render(:unicode)
-    end
+#     def translate()
+#         heading = ["English", @language]
+#         row = []
+#         @phrases.each do |au, translation|
+#             column = [au, translation]
+#             row.push(column)   
+#         end
+#         table = TTY::Table.new(heading, row)
+#         puts table.render(:unicode)
+#     end
 
-    def climate()
-        puts @climate.colorize(:blue)
-    end
+#     def climate()
+#         puts @climate.colorize(:blue)
+#     end
 
-    def packing()
-        puts @list
-    end
-end
+#     def packing()
+#         puts @list
+#     end
+# end
 
 
 puts "Welcome, if you are looking for a travel destination suggestion lets begin"
