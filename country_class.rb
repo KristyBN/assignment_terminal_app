@@ -8,7 +8,7 @@ require "colorize"
 class Country
     attr_reader :phrases, :activities, :climate, :list, :language
     def initialize(activities, phrases, climate, list, language)
-        @activities = activities
+        @activities = activities #must be an array
         @phrases = phrases
         @climate = climate
         @list = list
