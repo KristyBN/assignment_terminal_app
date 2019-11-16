@@ -1,3 +1,7 @@
+=begin
+    class file for travel.rb, compartmentalised. 
+    this holds the country class and methods to be used 
+=end
 require "tty-table"
 require "colorize"
 

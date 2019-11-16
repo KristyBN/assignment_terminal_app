@@ -14,6 +14,7 @@ prompt = TTY::Prompt.new
 font = TTY::Font.new(:doom)
 
 #information for the countries, relate to things to do, what to pack, common phrases and climate
+
 bali_do = ["explore and hike volcacnos jungle and waterfalls", "monkey forest",
     "relax at the beach", "indulge at world class spas"]
 bali_list = ["swimwear", "light clothing", "hat", "sunglasses", "sandles/thongs", 
