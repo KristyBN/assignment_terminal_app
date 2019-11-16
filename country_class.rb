@@ -35,4 +35,5 @@ class Country
     def packing()
         puts @list
     end
+  
 end

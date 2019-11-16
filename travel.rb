@@ -1,6 +1,7 @@
 =begin
     This terminal app is designed to help the user select a country
-    to travel to and access information about the destination
+    to travel to and access information about the destination and then
+    link to a site to book the holiday
 =end
 
 require "./country_class" #Have moved class to new file country_class
@@ -8,6 +9,7 @@ require "tty-prompt" #used for a menu prompt
 require "tty-table" #used to display translations as a table
 require "tty-font" #gives the larger font for destination
 require "colorize" #gives text colour throughout
+require "launchy" #links to a booking site
 prompt = TTY::Prompt.new
 font = TTY::Font.new(:doom)
 
@@ -156,6 +158,7 @@ quit = false
         menu.choice "Get some common local phrases"
         menu.choice "need some climate info"
         menu.choice "What to pack"
+        menu.choice "book my flights"
         menu.choice "quit"
     end
 
@@ -169,6 +172,8 @@ quit = false
             country.climate()
         when "What to pack"
             country.packing()
+        when "book my flights"
+            Launchy.open("https://www.expedia.com.au/")
         when "quit"
             quit = true
         end
