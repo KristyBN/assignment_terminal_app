@@ -109,7 +109,7 @@ else
     else
         puts "do you prefer history, food or relaxation?"
         activity = gets.chomp.downcase
-        if (climate == "warm" && activity == "history" || "food" ) && (budget > 4000)
+        if (climate == "warm" && activity == "history" || activity == "food" ) && (budget > 4000)
             puts font.write("your off to Italy").colorize(:green)
             destination = "italy"
         elsif (climate == "warm" && activity == "relaxation") && (budget > 4000)
