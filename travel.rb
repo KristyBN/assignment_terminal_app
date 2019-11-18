@@ -10,10 +10,10 @@ require "tty-table" #used to display translations as a table
 require "tty-font" #gives the larger font for destination
 require "colorize" #gives text colour throughout
 require "launchy" #links to a booking site
-require "tty-box'" #adds a box around climate
+
 prompt = TTY::Prompt.new
 font = TTY::Font.new(:doom)
-TTY::Box.frame
+
 
 #information for the countries, relate to things to do, what to pack, common phrases and climate
 bali = {
