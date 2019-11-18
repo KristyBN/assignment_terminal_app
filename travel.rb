@@ -10,8 +10,10 @@ require "tty-table" #used to display translations as a table
 require "tty-font" #gives the larger font for destination
 require "colorize" #gives text colour throughout
 require "launchy" #links to a booking site
+require "tty-box'" #adds a box around climate
 prompt = TTY::Prompt.new
 font = TTY::Font.new(:doom)
+TTY::Box.frame
 
 #information for the countries, relate to things to do, what to pack, common phrases and climate
 bali = {
@@ -97,48 +99,51 @@ nz = {
 puts "Welcome, if you are looking for a travel destination suggestion lets begin"
 
 #putting in user preferences regarding budget, climate and experience prefrences
-puts "What is your budget?"
-budget = gets.chomp.to_i
-if budget < 1000
-    puts font.write("you are off to Bali").colorize(:green)
-    destination = "bali"    
-else
-    puts "do you prefer warm or cold climates?"
-    climate = gets.chomp.downcase
-    if climate == "cold"
-        puts "do you most prefer adventure, history or food?"
-        activity = gets.chomp.downcase
-        if (climate == "cold" && activity == "adventure") && (budget < 2000)
-            puts font.write("your off to NZ").colorize(:green)
-            destination = "nz"
-        elsif (climate == "cold" && activity == "history") && (budget > 2000)
-            puts font.write("your off to Germany").colorize(:green)
-            destination = "germany"
-        elsif (climate == "cold" && activity == "food") && (budget > 3000)
-            puts font.write("your off to France").colorize(:green)
-            destination = "france"
-        else
-            puts font.write("your going to Japan").colorize(:green)
-            destination = "japan"
-        end 
-
+begin
+    puts "What is your budget?"
+    budget = gets.chomp.to_i
+    if budget < 1000
+        puts font.write("you are off to Bali").colorize(:green)
+        destination = "bali"    
     else
-        puts "do you prefer history, food or relaxation?"
-        activity = gets.chomp.downcase
-        if (climate == "warm" && activity == "history" || activity == "food" ) && (budget > 4000)
-            puts font.write("your off to Italy").colorize(:green)
-            destination = "italy"
-        elsif (climate == "warm" && activity == "relaxation") && (budget > 4000)
-            puts font.write("your off to the Maldives").colorize(:green)
-            destination = "maldives"
-        else 
-            puts font.write("your going to Japan").colorize(:green)
-            destination = "japan"
-        end 
-        
-    end
-end
+        puts "do you prefer warm or cold climates?"
+        climate = gets.chomp.downcase
+        if climate == "cold"
+            puts "do you most prefer adventure, history or food?"
+            activity = gets.chomp.downcase
+            if (climate == "cold" && activity == "adventure") && (budget < 2000)
+                puts font.write("your off to NZ").colorize(:green)
+                destination = "nz"
+            elsif (climate == "cold" && activity == "history") && (budget > 2000)
+                puts font.write("your off to Germany").colorize(:green)
+                destination = "germany"
+            elsif (climate == "cold" && activity == "food") && (budget > 3000)
+                puts font.write("your off to France").colorize(:green)
+                destination = "france"
+            else
+                puts font.write("your going to Japan").colorize(:green)
+                destination = "japan"
+            end 
 
+        else
+            puts "do you prefer history, food or relaxation?"
+            activity = gets.chomp.downcase
+            if (climate == "warm" && activity == "history" || activity == "food" ) && (budget > 4000)
+                puts font.write("your off to Italy").colorize(:green)
+                destination = "italy"
+            elsif (climate == "warm" && activity == "relaxation") && (budget > 4000)
+                puts font.write("your off to the Maldives").colorize(:green)
+                destination = "maldives"
+            else 
+                puts font.write("your going to Japan").colorize(:green)
+                destination = "japan"
+            end 
+            
+        end
+    end 
+rescue 
+    puts "please enter a valid entry"
+end
 
 
 # created destinations

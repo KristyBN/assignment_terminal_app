@@ -4,6 +4,7 @@
 =end
 require "tty-table"
 require "colorize"
+require "tty-box'"
 
 class Country
     attr_reader :phrases, :activities, :climate, :list, :language
@@ -33,7 +34,7 @@ class Country
     end
 
     def climate()
-        puts @climate.colorize(:blue)
+        box = TTY::Box.frame{@climate.colorize(:blue)}
     end
 
     def packing()
