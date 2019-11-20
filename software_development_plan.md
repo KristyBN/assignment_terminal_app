@@ -53,5 +53,7 @@ It outlines how the features will be implemented, has checklists within each ste
 ![trello_travel3](./trello_travel3.png)
 ![trello_travel4](./trello_travel4.png)
 
+## Flowchart
+![flowchart_travel_app](./flowchart_travel_app.jpeg)
 
 
