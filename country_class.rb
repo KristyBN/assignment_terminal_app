@@ -10,7 +10,7 @@ require "tty-box"
 class Country
     attr_reader :phrases, :activities, :climate, :list, :language
     def initialize(activities, phrases, climate, list, language)
-        @activities = activities #must be an array
+        @activities = activities 
         @phrases = phrases
         @climate = climate
         @list = list
