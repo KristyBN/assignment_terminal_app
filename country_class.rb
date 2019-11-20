@@ -19,7 +19,7 @@ class Country
 
     def to_do()
         for activity in @activities do
-        puts activity.colorize(:red)
+            puts box = TTY::Box.frame(activity.colorize(:green))
         end
     end
 
@@ -35,7 +35,7 @@ class Country
     end
 
     def climate()
-       puts box = TTY::Box.frame(@climate.colorize(:blue)) ,padding: 3, align: :center
+       puts box = TTY::Box.frame(@climate.colorize(:blue))
     end
 
     def packing()
